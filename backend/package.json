@@ -1,0 +1,18 @@
+{
+  "name": "smart-water-platform-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Smart Water Conservancy Platform (智慧水利平台)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["water", "monitoring", "iot", "smart-city"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "better-sqlite3": "^9.2.2"
+  }
+}
