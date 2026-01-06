@@ -60,18 +60,22 @@ function App() {
         fetch(`${API_BASE}/stations/${stationId}/flow-rates`)
       ]);
       
+      if (!levelsRes.ok || !flowsRes.ok) {
+        throw new Error('Failed to fetch station data');
+      }
+      
       const levels = await levelsRes.json();
       const flows = await flowsRes.json();
       
       setWaterLevelData(levels.reverse().map((item, index) => ({
         index: index + 1,
-        level: parseFloat(item.water_level.toFixed(2)),
+        level: Math.round(item.water_level * 100) / 100,
         timestamp: new Date(item.timestamp).toLocaleTimeString()
       })));
       
       setFlowRateData(flows.reverse().map((item, index) => ({
         index: index + 1,
-        flow: parseFloat(item.flow_rate.toFixed(2)),
+        flow: Math.round(item.flow_rate * 100) / 100,
         timestamp: new Date(item.timestamp).toLocaleTimeString()
       })));
     } catch (err) {
