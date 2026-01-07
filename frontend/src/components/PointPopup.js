@@ -10,6 +10,7 @@ const PointPopup = ({ point, onClose }) => {
 
   useEffect(() => {
     loadPointData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [point.id]);
 
   const loadPointData = async () => {

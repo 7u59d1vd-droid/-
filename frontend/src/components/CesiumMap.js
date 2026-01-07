@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Viewer, Entity, CameraFlyTo, PointGraphics } from 'resium';
-import { Cartesian3, Color, Ion, VerticalOrigin } from 'cesium';
+import { Cartesian3, Color, Ion, buildModuleUrl } from 'cesium';
 import { pointsAPI } from '../api/api';
 import { message } from 'antd';
 import PointPopup from './PointPopup';
+
+// Set Cesium base URL to use public directory assets
+window.CESIUM_BASE_URL = '/';
 
 // Set Cesium Ion access token (use default or your own)
 Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNGQ2MzNkYS03OGM4LTRhZmEtYjM0My0wYjA3NjI2MmZiNzYiLCJpZCI6MjM2NjY2LCJpYXQiOjE3Mjk1ODkxNzJ9.aYWOe0oC5PqJJNBSzqHmL8s4GnPq-CzL8uCVBEJqTfM';
@@ -11,7 +14,6 @@ Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJiNGQ2M
 const CesiumMap = () => {
   const [points, setPoints] = useState([]);
   const [selectedPoint, setSelectedPoint] = useState(null);
-  const [viewerRef, setViewerRef] = useState(null);
 
   useEffect(() => {
     loadPoints();
@@ -42,7 +44,6 @@ const CesiumMap = () => {
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       <Viewer
         full
-        ref={(ref) => setViewerRef(ref?.cesiumElement)}
         timeline={false}
         animation={false}
         baseLayerPicker={false}

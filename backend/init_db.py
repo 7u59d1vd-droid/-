@@ -106,7 +106,7 @@ def init_database():
         admin_user = models.User(
             username="admin",
             email="admin@smartwater.com",
-            hashed_password="$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewY5yvJ5C.xqNmCy",  # "admin123"
+            hashed_password="$2b$12$RQeG8boU07d45atYNpNQV.WwoVFEUpqzg1FZbNV4c.wo5sWCIgI3K",  # "admin123"
             role="admin"
         )
         db.add(admin_user)
@@ -115,7 +115,7 @@ def init_database():
         test_user = models.User(
             username="user",
             email="user@smartwater.com",
-            hashed_password="$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewY5yvJ5C.xqNmCy",  # "admin123"
+            hashed_password="$2b$12$RQeG8boU07d45atYNpNQV.WwoVFEUpqzg1FZbNV4c.wo5sWCIgI3K",  # "admin123"
             role="user"
         )
         db.add(test_user)
